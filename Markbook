@@ -1,0 +1,117 @@
+marks = [1,99,99,99,99,99,99,99,99,99,99,99,100]
+students = ['dumb kid name','me','you','us','them','b','c','james','o','tim','q','g', 'john']
+while True:
+    # display menu options
+    print("Markbook")
+    print("1 - Class average")
+    print("2 - At Risk Students")
+    print("3 - Highest Mark and Student")
+    print("4 - Full Class Report")
+    print('Type Add to add students')
+    print('Type Edit to edit a student name')
+    print('Type Remove to remove a student')
+    print("Type 'Quit' to close")
+    low_marks = []
+    low_students = []
+    i = 0
+    _ = 1
+    total = 0
+    high_mark = 0
+    highest_mark = 0
+    high_student = []
+    choice = input("Menu choice: ")
+
+    # handle the choices
+    if choice == "Remove":
+        print(students)
+        ind = int(input("Which student would you like to remove? "))
+        del students[ind-1]
+        print(students)
+        print('==========================================')
+        input('Back to Menu [Enter]...')
+    
+    if choice == "Edit":
+        print(students)
+        index = int(input("Which student would you like to edit?: "))
+        new_student = input("Enter Student Name: ")
+        students[index-1] = new_student
+        print(students)
+        print('==========================================')
+        input('Back to Menu [Enter]...')
+    
+    if choice == "Add":
+        while _ >= 1:
+            student = input("Enter Student Name: ")
+            if student != "Done":
+              students.append(student)
+            elif student == "Done":
+                print(students)
+                print('==================================')
+                input('Back to Menu [Enter]...')
+                break
+    
+    
+    
+    if choice == '1':
+        for mark in marks:
+            total += mark
+        
+        print()
+        print()
+        print("The class average is:", total//len(marks), "%")
+        print("======================================================")
+        input("Back to menu [Enter]...")
+    
+    
+    elif choice == '2':
+        while i < len(marks):
+            low_mark = marks[i]
+            if low_mark <= 65:
+                low_students.append(students[i])
+                low_marks.append(low_mark)
+            i += 1
+        print()
+        print()
+        print("the lowest mark(s) is/are: ",low_marks)
+        print()
+        print("the student(s) with the lowest marks is/are: ",low_students)
+        print("======================================================")
+        input("Back to menu [Enter]...")
+    
+
+
+    elif choice == '3':
+        while i < len(marks):
+            high_mark = marks[i]
+            if high_mark > highest_mark:
+                highest_mark = high_mark
+                high_student = list()
+                high_student.append(students[i])
+            elif high_mark == highest_mark:
+                high_student.append(students[i])
+            i += 1
+        print()
+        print()
+        print('The highest mark is: ', highest_mark, "%")
+        print()
+        print('The student(s) with the highest mark is/are: ', high_student)
+        print("======================================================")
+        input("Back to menu [Enter]...")
+    
+    elif choice == '4':
+        print()
+        print()
+        print('Marks and Students')
+        print('--------------------')
+        print("Marks: ",marks)
+        print()
+        print("Students: ",students)
+        print("======================================================")
+        input("Back to menu [Enter]...")
+    
+    
+
+                
+    
+    if choice == "Students":
+        print(students)
